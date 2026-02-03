@@ -55,7 +55,7 @@ class CardioExercise(Exercise):
     """
     
     def __init__(self, name: str, distance: float, duration: float, date: str = None):
-        super.__init__(name,date)
+        super().__init__(name, date)
         self.distance = distance
         self.duration = duration
     
