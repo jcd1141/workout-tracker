@@ -42,3 +42,28 @@ class Exercise:
     
     def __str__(self) -> str:
             return f"{self.name}: {self.calculate_calories()} calories"
+
+
+class CardioExercise(Exercise):
+    """Cardio exercise with distance and time tracking.
+    
+    Attributes:
+        name (str): Exercise name
+        date (str): Date performed
+        distance (float): Distance covered in miles
+        duration (float): Time spent in minutes
+    """
+    
+    def __init__(self, name: str, distance: float, duration: float, date: str = None):
+        super.__init__(name,date)
+        self.distance = distance
+        self.duration = duration
+    
+    def calculate_calories(self) -> float:
+        return self.distance*100
+    
+    def get_duration(self) -> float:
+        return self.duration
+    
+    def __str__(self) -> str:
+        return f"{self.name} ({self.distance} miles, {self.duration} min): {self.calculate_calories()} calories"
