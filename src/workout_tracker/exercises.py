@@ -41,7 +41,7 @@ class Exercise:
         return 0.0
     
     def __str__(self) -> str:
-            return f"{self.name}: {self.calculate_calories()} calories"
+        return f"{self.name}: {self.calculate_calories():.0f} calories"
 
 
 class CardioExercise(Exercise):
@@ -67,3 +67,25 @@ class CardioExercise(Exercise):
     
     def __str__(self) -> str:
         return f"{self.name} ({self.distance} miles, {self.duration} min): {self.calculate_calories()} calories"
+
+
+class StrengthExercise(Exercise):
+
+    def __init__(self, name: str, weight : float, reps: int, sets: int, date: str = None):
+        super().__init__(name, date)
+        self.weight = weight
+        self.reps = reps
+        self.sets = sets
+
+    def calculate_calories(self) -> float:
+        return self.weight * self.reps * self.sets * 0.05
+    
+    def get_duration(self) -> float:
+        return self.sets * 3
+    
+    def __str__(self) -> str:
+        return (
+            f"{self.name} "
+            f"({self.weight} lbs x {self.reps} reps x {self.sets} sets): "
+            f"{self.calculate_calories():.0f} calories"
+        )
